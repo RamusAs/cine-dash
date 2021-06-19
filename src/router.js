@@ -13,13 +13,13 @@ export default new Router({
       children: [
         // Dashboard
         {
-          name: 'Dashboard',
+          name: 'Statistiques',
           path: '',
           component: () => import('@/views/dashboard/Dashboard'),
         },
         // Pages
         {
-          name: 'User Profile',
+          name: 'Commandes en cours',
           path: 'pages/user',
           component: () => import('@/views/dashboard/pages/UserProfile'),
         },
@@ -40,9 +40,14 @@ export default new Router({
         },
         // Tables
         {
-          name: 'Regular Tables',
+          name: 'Commandes terminées',
           path: 'tables/regular-tables',
           component: () => import('@/views/dashboard/tables/RegularTables'),
+        },
+        {
+          name: 'Gestion du staock ',
+          path: 'tables/statistique-tables',
+          component: () => import('@/views/dashboard/tables/StatistiqueTables'),
         },
         // Maps
         {

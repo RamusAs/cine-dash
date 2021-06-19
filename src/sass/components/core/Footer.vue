@@ -12,7 +12,7 @@
           md="auto"
         >
           <div class="text-body-1 font-weight-light pt-6 pt-md-0 text-center">
-            &copy; {{ new Date.getFullYear() }}, made with
+            &copy; {{new Date.getFullYear()}}, made with
             <v-icon size="18">
               mdi-heart
             </v-icon>

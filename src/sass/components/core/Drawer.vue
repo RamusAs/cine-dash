@@ -111,11 +111,6 @@
           icon: 'mdi-cart-check',
           to: '/tables/regular-tables',
         },
-        {
-          icon: 'mdi-clipboard-text',
-          title: 'Gestion du stock',
-          to: '/tables/statistique-tables',
-        },
       ],
     }),
 
