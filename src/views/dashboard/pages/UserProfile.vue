@@ -38,14 +38,28 @@
       </div>
     </v-row> -->
     <v-data-table
+      v-model="selected"
       :headers="commandetHeaders"
       :items="commandes"
       :single-expand="singleExpand"
       :expanded.sync="expanded"
       item-key="id"
       show-expand
+      show-select
+      single-select
       class="elevation-1"
     >
+      <template v-slot:top>
+        <v-btn
+          v-if="selected.length"
+          color="primary"
+          dark
+          class="mb-2"
+          @click="valider"
+        >
+          Valider
+        </v-btn>
+      </template>
       <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length">
           <v-simple-table>
@@ -83,12 +97,13 @@
 </template>
 
 <script>
-  import { GetAll } from '@/api/commande'
+  import { GetAll, ValideMany } from '@/api/commande'
 
   export default {
     data () {
       return {
         expanded: [],
+        selected: [],
         singleExpand: false,
         commandetHeaders: [
           {
@@ -199,13 +214,22 @@
       }
     },
     async mounted () {
-      setInterval(this.getData, 5000)
+      this.getData()
+      setInterval(this.getData, 60000)
     },
     methods: {
       async getData () {
         try {
           this.commandes = (await GetAll()).data
-          // console.log('🚀 ~ file: UserProfile.vue ~ line 51 ~ getData ~ res', res)
+        } catch (error) {
+          //
+        }
+      },
+      async valider () {
+        try {
+          await ValideMany(this.selected.map(el => el.id))
+          await this.getData()
+          this.selected = []
         } catch (error) {
           //
         }

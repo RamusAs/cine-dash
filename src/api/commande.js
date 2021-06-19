@@ -6,6 +6,14 @@ export async function Create (dataCommande) {
   const response = await HTTP.put(`${URL_BASE}/create`, dataCommande)
   return response
 }
+export async function ValideOne (id) {
+  const response = await HTTP.put(`${URL_BASE}/valideOne/${id}`)
+  return response
+}
+export async function ValideMany (ids) {
+  const response = await HTTP.put(`${URL_BASE}/valideMeny/`, { ids })
+  return response
+}
 export async function GetAll () {
   const response = await HTTP.get(`${URL_BASE}/getAll`)
   return response
