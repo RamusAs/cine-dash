@@ -18,4 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   config = configDev
 }
+
+config = configProd
+
 export default config

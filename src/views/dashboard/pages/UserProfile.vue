@@ -199,7 +199,7 @@
       }
     },
     async mounted () {
-      await this.getData()
+      setInterval(this.getData, 5000)
     },
     methods: {
       async getData () {
